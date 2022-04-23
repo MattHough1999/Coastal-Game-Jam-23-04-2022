@@ -16,8 +16,12 @@ public class Ball : MonoBehaviour
     {
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         rb.AddForce(Random.Range(-75, 75), Random.Range(-75, 75), 0, ForceMode.Impulse);
+        Color color = new Color();
+        color.r = Random.Range(0.00f, 1.00f);
+        color.g = Random.Range(0.00f, 1.00f);
+        color.b = Random.Range(0.00f, 1.00f);
+        GetComponent<Renderer>().material.SetColor("_Color", color);
     }
-
     // Update is called once per frame
     void Update()
     {

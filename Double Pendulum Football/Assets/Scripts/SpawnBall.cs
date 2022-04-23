@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpawnBall : MonoBehaviour
 {
@@ -37,6 +38,10 @@ public class SpawnBall : MonoBehaviour
             player2Score = player2Score + score;
             P2Score.text = player2Score.ToString();
             restart();
+        }
+        if(player1Score >= 15 || player2Score >= 15) 
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
     public void restart()
