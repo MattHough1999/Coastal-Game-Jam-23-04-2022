@@ -1,26 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     
+    public SpawnBall spawn;
+    
+    private string lastTouched = "PlayerOne";
+    private float touchTimeout = 7.00f;
     // Start is called before the first frame update
     void Start()
     {
-
+        spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         rb.AddForce(Random.Range(-75, 75), Random.Range(-75, 75), 0, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.position.z <= -10.0f) 
+        if(gameObject.transform.position.y <= -10.0f) 
         {
-            
+            outOfBounds(lastTouched);    
+        }
+        touchTimeout = touchTimeout - Time.deltaTime;
+        if(touchTimeout <= 0) 
+        {
+            spawn.restart();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "PlayerOne" || collision.gameObject.tag == "PlayerTwo") { lastTouched = collision.gameObject.tag; }
+        touchTimeout = 7.00f;
+
+
+        //Debug.Log(lastTouched);
+
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        if (collision.gameObject.tag == "P2Goal") { spawn.addPoint("PlayerOne", 1); }
+        if (collision.gameObject.tag == "P1Goal") { spawn.addPoint("PlayerTwo", 1); }
+        if (collision.gameObject.tag == "P2Goal2") { spawn.addPoint("PlayerOne", 5); }
+        if (collision.gameObject.tag == "P1Goal2") { spawn.addPoint("PlayerTwo", 5); }
+    }
+
+    void outOfBounds(string lastTouched) 
+    {
+        if(lastTouched == "PlayerOne") 
+        {
+            spawn.addPoint("PlayerTwo", 1);
+        }
+        else 
+        {
+            spawn.addPoint("PlayerOne",1 );
         }
     }
 
-
+    
+    
 }

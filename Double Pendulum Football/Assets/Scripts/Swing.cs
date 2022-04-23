@@ -46,14 +46,14 @@ public class Swing : MonoBehaviour
         if (Input.GetKey(swingRight)) 
         {
             motor.force = 1000;
-            motor.targetVelocity = 90;
+            motor.targetVelocity = 140;
             motor.freeSpin = false;
             
         }
         if (Input.GetKey(swingLeft))
         {
             motor.force = 1000;
-            motor.targetVelocity = -90;
+            motor.targetVelocity = -140;
             motor.freeSpin = false;
             
         }
