@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Swing : MonoBehaviour
 {
@@ -10,15 +11,22 @@ public class Swing : MonoBehaviour
     [SerializeField] KeyCode swingLeft;
     [SerializeField] KeyCode swingRight;
     [SerializeField] KeyCode lockPendulum;
-    private float secHingeAngle = 0.00f;
+    [SerializeField] Slider boostSlider;
+    [SerializeField] Image sliderFill;
+
+
+    private float secHingeAngle = 0.00f,boostTime = 5.00f;
+    Color color = Color.red;
+    GameObject hingeGo,secHingeGo;
     
     void Start()
     {
-        if(hinge == null) 
+        if(hinge == null || secondaryHinge == null) 
         {
-
             Application.Quit();
         }
+        hingeGo = hinge.gameObject;
+        secHingeGo = secondaryHinge.gameObject;
         
     }
 
@@ -26,21 +34,11 @@ public class Swing : MonoBehaviour
     void Update()
     {
         var motor = hinge.motor;
-        var limits = secondaryHinge.limits;
         if (Input.GetKeyUp(swingRight) && Input.GetKeyUp(swingLeft) || !(Input.GetKey(swingRight) && Input.GetKey(swingRight)))
         {
             motor.force = 0;
             motor.targetVelocity = 0;
             motor.freeSpin = true;
-        }
-        secondaryHinge.limits = limits;
-        secondaryHinge.useLimits = true;
-        if (!Input.GetKey(lockPendulum)) 
-        {
-            limits.min = 0;
-            limits.max = 0;
-            secondaryHinge.limits = limits;
-            secondaryHinge.useLimits = false;
         }
 
         if (Input.GetKey(swingRight)) 
@@ -59,19 +57,23 @@ public class Swing : MonoBehaviour
         }
         if (Input.GetKey(lockPendulum))
         {
-            //secondaryHinge.useLimits = true;
-            limits = secondaryHinge.limits;
-            secHingeAngle = secondaryHinge.angle;
-            limits.min = secHingeAngle - 1;
-            limits.max = secHingeAngle + 1;
+            if (boostTime >= 0)
+            {
+                motor.force = 5000;
+                motor.targetVelocity = motor.targetVelocity * 3;
+                boostTime = boostTime - (Time.deltaTime * 4);
+            }
             
-            Debug.Log("Locked " + lockPendulum.ToString());
-            Debug.Log(secHingeAngle);
         }
-        //secondaryHinge.limits = limits;
-        
+        if(boostTime <= 5) 
+        {
+            boostTime = boostTime + Time.deltaTime;
+        }
         hinge.motor = motor;
         hinge.useMotor = true;
-        
+        boostSlider.value = boostTime;
+        //color.r = (boostTime / 5) * (-1);
+        color.g = boostTime / 5;
+        sliderFill.color = color;
     }
 }

@@ -11,13 +11,19 @@ public class SpawnBall : MonoBehaviour
 
     public TextMeshProUGUI P1Score;
     public TextMeshProUGUI P2Score;
+    public AudioSource audioSource;
+    public AudioClip clip1;
+    public AudioClip clip2;
+    public float volume = 0.5f;
+
     public int player1Score = 0, player2Score = 0;
     GameObject ball;
-    // Start is called before the first frame update
+
     void Start()
-    {
-        ball = Instantiate(ballPrefab);
-    }
+        {
+            ball = Instantiate(ballPrefab);
+        }
+    
 
     // Update is called once per frame
     void Update()
@@ -29,19 +35,27 @@ public class SpawnBall : MonoBehaviour
     {
         if (Player == "PlayerOne")
         {
+            audioSource.PlayOneShot(clip1, volume);
             player1Score = player1Score + score;
             P1Score.text = player1Score.ToString();
             restart();
         }
         if (Player == "PlayerTwo")
         {
+            audioSource.PlayOneShot(clip2, volume);
             player2Score = player2Score + score;
             P2Score.text = player2Score.ToString();
             restart();
         }
-        if(player1Score >= 15 || player2Score >= 15) 
+        if(player1Score >= 15) 
         {
-            SceneManager.LoadScene("Menu");
+            PlayerPrefs.SetString("Winner", "Player 1");
+            SceneManager.LoadScene("End");
+        }
+        else if (player2Score >= 15)
+        {
+            PlayerPrefs.SetString("Winner", "Player 2");
+            SceneManager.LoadScene("End");
         }
     }
     public void restart()
