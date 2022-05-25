@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2211741104360881269}
   m_Layer: 0
   m_Name: SpawnBall
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,10 @@ MonoBehaviour:
   ballPrefab: {fileID: 5815501039344604622, guid: c40b36aff558b994cac1bc56e4b20ec4, type: 3}
   P1Score: {fileID: 0}
   P2Score: {fileID: 0}
+  audioSource: {fileID: 0}
+  clip1: {fileID: 0}
+  clip2: {fileID: 0}
+  volume: 0.5
   player1Score: 0
   player2Score: 0
 --- !u!1001 &5380872466810921170

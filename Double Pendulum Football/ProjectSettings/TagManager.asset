@@ -10,6 +10,7 @@ TagManager:
   - P2Goal
   - P1Goal2
   - P2Goal2
+  - Ball
   layers:
   - Default
   - TransparentFX

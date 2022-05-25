@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Swing : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool active = true;
+
     [SerializeField] HingeJoint hinge;
     [SerializeField] HingeJoint secondaryHinge;
     [SerializeField] KeyCode swingLeft;
@@ -15,7 +16,7 @@ public class Swing : MonoBehaviour
     [SerializeField] Image sliderFill;
 
 
-    private float secHingeAngle = 0.00f,boostTime = 5.00f;
+    private float secHingeAngle = 0.00f,boostTime = 5.00f,inactive;
     Color color = Color.red;
     GameObject hingeGo,secHingeGo;
     
@@ -46,6 +47,7 @@ public class Swing : MonoBehaviour
             motor.force = 2000;
             motor.targetVelocity = 140;
             motor.freeSpin = false;
+            inactive = 0.00f;
             
         }
         if (Input.GetKey(swingLeft))
@@ -53,7 +55,8 @@ public class Swing : MonoBehaviour
             motor.force = 2000;
             motor.targetVelocity = -140;
             motor.freeSpin = false;
-            
+            inactive = 0.00f;
+
         }
         if (Input.GetKey(lockPendulum))
         {
@@ -72,8 +75,13 @@ public class Swing : MonoBehaviour
         hinge.motor = motor;
         hinge.useMotor = true;
         boostSlider.value = boostTime;
-        //color.r = (boostTime / 5) * (-1);
+        color.r = (boostTime * 5) * (-1);
         color.g = boostTime / 5;
         sliderFill.color = color;
+        inactive = inactive + Time.deltaTime;
+        if(inactive >= 120) 
+        {
+            active = false;
+        }
     }
 }

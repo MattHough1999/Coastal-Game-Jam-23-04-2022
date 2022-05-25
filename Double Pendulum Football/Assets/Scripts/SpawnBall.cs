@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class SpawnBall : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;
-
+    [SerializeField] Swing p1Swing;
+    [SerializeField] Swing p2Swing;
     public TextMeshProUGUI P1Score;
     public TextMeshProUGUI P2Score;
     public AudioSource audioSource;
@@ -28,7 +29,10 @@ public class SpawnBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(p1Swing.active == false && p2Swing.active == false) 
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     public void addPoint(string Player, int score)

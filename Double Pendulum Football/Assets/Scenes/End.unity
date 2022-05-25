@@ -707,6 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533d214f77a344345969440381620912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   hinge: {fileID: 1170940496}
   secondaryHinge: {fileID: 1644950355}
   swingLeft: 275
@@ -2502,6 +2503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533d214f77a344345969440381620912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   hinge: {fileID: 301050734}
   secondaryHinge: {fileID: 2012231204}
   swingLeft: 97
@@ -3068,6 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5aca564eab5ee147994b4e814280c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadScene: Menu
 --- !u!114 &2057292130
 MonoBehaviour:
   m_ObjectHideFlags: 0
