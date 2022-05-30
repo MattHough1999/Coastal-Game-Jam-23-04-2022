@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     
     private string lastTouched = "PlayerOne";
     private float touchTimeout = 7.00f;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -52,22 +53,40 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+        string col = collision.gameObject.tag;
+        switch (col)
+        {
+            case "P2Goal":
+                if(lastTouched == "PlayerTwo") { spawn.addPoint("PlayerOne", 1, false); }
+                else { spawn.addPoint("PlayerOne", 1, true); }
+                    break;
+            case "P2Goal2":
+                if (lastTouched == "PlayerTwo") { spawn.addPoint("PlayerOne", 5, false); }
+                else { spawn.addPoint("PlayerOne", 5, true); }
+                break;
+            case "P1Goal":
+                if (lastTouched == "PlayerOne") { spawn.addPoint("PlayerTwo", 1, false); }
+                else { spawn.addPoint("PlayerTwo", 1, true); }
+                break;
+            case "P1Goal2":
+                if (lastTouched == "PlayerOne") { spawn.addPoint("PlayerTwo", 5, false); }
+                else { spawn.addPoint("PlayerTwo", 5, true); }
+                break;
 
-        if (collision.gameObject.tag == "P2Goal") { spawn.addPoint("PlayerOne", 1); }
-        if (collision.gameObject.tag == "P1Goal") { spawn.addPoint("PlayerTwo", 1); }
-        if (collision.gameObject.tag == "P2Goal2") { spawn.addPoint("PlayerOne", 5); }
-        if (collision.gameObject.tag == "P1Goal2") { spawn.addPoint("PlayerTwo", 5); }
+
+        }
+        
     }
 
     void outOfBounds(string lastTouched) 
     {
         if(lastTouched == "PlayerOne") 
         {
-            spawn.addPoint("PlayerTwo", 1);
+            spawn.addPoint("PlayerTwo", 1, true);
         }
         else 
         {
-            spawn.addPoint("PlayerOne",1 );
+            spawn.addPoint("PlayerOne", 1, true);
         }
     }
 

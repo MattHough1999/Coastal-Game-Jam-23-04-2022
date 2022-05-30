@@ -13,8 +13,8 @@ public class SpawnBall : MonoBehaviour
     public TextMeshProUGUI P1Score;
     public TextMeshProUGUI P2Score;
     public AudioSource audioSource;
-    public AudioClip clip1;
-    public AudioClip clip2;
+    public List<AudioClip> goalClips;
+    public List<AudioClip> ownGoalClips;
     public float volume = 0.5f;
 
     public int player1Score = 0, player2Score = 0;
@@ -35,18 +35,20 @@ public class SpawnBall : MonoBehaviour
         }
     }
 
-    public void addPoint(string Player, int score)
+    public void addPoint(string Player, int score,bool ownGoal)
     {
         if (Player == "PlayerOne")
         {
-            audioSource.PlayOneShot(clip1, volume);
+            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0,goalClips.Count)], volume);
+            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], volume);
             player1Score = player1Score + score;
             P1Score.text = player1Score.ToString();
             restart();
         }
         if (Player == "PlayerTwo")
         {
-            audioSource.PlayOneShot(clip2, volume);
+            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0, goalClips.Count)], volume);
+            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], volume);
             player2Score = player2Score + score;
             P2Score.text = player2Score.ToString();
             restart();
