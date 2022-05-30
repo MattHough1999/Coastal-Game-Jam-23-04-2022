@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PlayerOne
-  - PlayerTwo
-  - P1Goal
-  - P2Goal
-  - P1Goal2
-  - P2Goal2
-  - Ball
+  tags: []
   layers:
   - Default
   - TransparentFX

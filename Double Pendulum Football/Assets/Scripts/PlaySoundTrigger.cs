@@ -23,9 +23,9 @@ public class PlaySoundTrigger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Ball") 
+        if (collision.transform.tag == "Ball" && !source.isPlaying) 
         {
-            source.pitch = source.pitch + Random.Range(0.10f, toneMod);
+            source.pitch = source.pitch + Random.Range(0.50f, toneMod);
             source.PlayOneShot(clip, volume); 
         
         }

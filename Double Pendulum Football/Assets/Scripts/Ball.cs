@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class Ball : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip clip;
+    float volume = 0.5f;
+
     public SpawnBall spawn;
     
     private string lastTouched = "PlayerOne";
@@ -20,7 +23,7 @@ public class Ball : MonoBehaviour
         color.r = Random.Range(0.00f, 1.00f);
         color.g = Random.Range(0.00f, 1.00f);
         color.b = Random.Range(0.00f, 1.00f);
-        GetComponent<Renderer>().material.SetColor("_Color", color);
+        GetComponent<Renderer>().material.SetColor("_BaseColor", color);
     }
     // Update is called once per frame
     void Update()
@@ -39,11 +42,13 @@ public class Ball : MonoBehaviour
     {
         //Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "PlayerOne" || collision.gameObject.tag == "PlayerTwo") { lastTouched = collision.gameObject.tag; }
+        if (!source.isPlaying) 
+        {
+            source.pitch = Random.Range(0.5f, 1.5f);
+            source.PlayOneShot(clip, volume);
+        }
+        
         touchTimeout = 7.00f;
-
-
-        //Debug.Log(lastTouched);
-
     }
     private void OnTriggerEnter(Collider collision)
     {

@@ -12,6 +12,7 @@ public class Swing : MonoBehaviour
     [SerializeField] KeyCode swingLeft;
     [SerializeField] KeyCode swingRight;
     [SerializeField] KeyCode lockPendulum;
+    [SerializeField] KeyCode lockPendulum1;
     [SerializeField] Slider boostSlider;
     [SerializeField] Image sliderFill;
 

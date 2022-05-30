@@ -13,7 +13,8 @@ public class MenuBall : MonoBehaviour
         color.r = Random.Range(0.00f, 1.00f);
         color.g = Random.Range(0.00f, 1.00f);
         color.b = Random.Range(0.00f, 1.00f);
-        GetComponent<Renderer>().material.SetColor("_Color", color);
+        //GetComponent<Renderer>().material.SetColor("_Color", color);
+        GetComponent<Renderer>().material.SetColor("_BaseColor", color);
     }
 
     // Update is called once per frame

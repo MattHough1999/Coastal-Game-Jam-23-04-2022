@@ -6,7 +6,7 @@ public class MenuBalls : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject ball;
-    float addBall = 2.0f;
+    float addBall = 1.0f;
     void Start()
     {
         Transform trans = gameObject.transform;
@@ -32,7 +32,7 @@ public class MenuBalls : MonoBehaviour
         if(addBall <= 0) 
         {
             Instantiate(ball, transform);
-            addBall = 1.5f;
+            addBall = 0.5f;
         }
     }
 }

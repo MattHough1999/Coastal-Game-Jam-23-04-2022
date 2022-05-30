@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] string loadScene;
-    float timeOut = 3000;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +16,12 @@ public class MenuButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeOut = timeOut - Time.deltaTime;
-        if (timeOut <= 0) quitGame();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        {
+            loadGame();
+        }
+        
     }
 
     public void loadGame() 
