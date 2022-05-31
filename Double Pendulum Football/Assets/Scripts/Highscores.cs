@@ -18,7 +18,7 @@ public class Highscores : MonoBehaviour
 
         initiateArray();
         
-        scoreNames = PlayerPrefs.GetString("Scores","AAAAA10\nMATTH22").Split();
+        scoreNames = PlayerPrefs.GetString("Scores","AAAAA10\nMMMIA22").Split();
         scores = new int[scoreNames.Length];
         //split into names and score
         for (int i = 0; i < scoreNames.Length; i++) 

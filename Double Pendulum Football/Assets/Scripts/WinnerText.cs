@@ -10,7 +10,7 @@ public class WinnerText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        winnerText.text = "FoolsBall! \n \n" + PlayerPrefs.GetString("Winner") + " wins!" ;
+        winnerText.text = "FoolsBall! \n" + PlayerPrefs.GetString("Winner") + " wins!" ;
     }
 
     // Update is called once per frame

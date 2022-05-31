@@ -97,8 +97,7 @@ public class SpawnBall : MonoBehaviour
         if(nameString.Length <= 4) { nameString += letter; P1Score.text = "Your Name is: \n" + nameString; restart(); }
         else
         {
-
-            PlayerPrefs.SetString("Scores", PlayerPrefs.GetString("Scores", "AAAAA10\nMATTH22") + "\n" + nameString + PlayerPrefs.GetInt("LastScore"));
+            PlayerPrefs.SetString("Scores", PlayerPrefs.GetString("Scores", "AAAAA0\nMMMIA22") + "\n" + nameString + PlayerPrefs.GetInt("LastScore"));
             //PlayerPrefs.SetInt("totalHighScores", PlayerPrefs.GetInt("totalHighScores") + 1);
             SceneManager.LoadScene("HighScores");
         }
