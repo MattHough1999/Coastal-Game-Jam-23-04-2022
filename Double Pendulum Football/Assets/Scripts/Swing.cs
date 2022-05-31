@@ -9,15 +9,12 @@ public class Swing : MonoBehaviour
 
     [SerializeField] HingeJoint hinge;
     [SerializeField] HingeJoint secondaryHinge;
-    [SerializeField] KeyCode swingLeft;
-    [SerializeField] KeyCode swingRight;
-    [SerializeField] KeyCode lockPendulum;
-    [SerializeField] KeyCode lockPendulum1;
+    [SerializeField] KeyCode swingLeft, swingRight, lockPendulum, lockPendulum1;
     [SerializeField] Slider boostSlider;
     [SerializeField] Image sliderFill;
+    [SerializeField] float boostTime = 5.00f;
 
-
-    private float secHingeAngle = 0.00f,boostTime = 5.00f,inactive;
+    private float secHingeAngle = 0.00f,inactive;
     Color color = Color.red;
     GameObject hingeGo,secHingeGo;
     

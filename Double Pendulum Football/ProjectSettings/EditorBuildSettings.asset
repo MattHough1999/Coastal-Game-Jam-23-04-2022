@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 2da030845b4071c4a90efeebe96cbf33
+  - enabled: 1
+    path: Assets/Scenes/SoloPlayer.unity
+    guid: e3ccf4253a5df5a4595fade3b27cfa2f
+  - enabled: 1
+    path: Assets/Scenes/MakeName.unity
+    guid: 5400184ef6e261f4ba0be2516be3a88b
+  - enabled: 1
+    path: Assets/Scenes/HighScores.unity
+    guid: f17ea097809e00847b95743985d5930b
   m_configObjects: {}

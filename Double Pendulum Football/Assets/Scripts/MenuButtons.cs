@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] string loadScene;
-    
+    [SerializeField] string loadScene2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +20,19 @@ public class MenuButtons : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            loadGame();
+            loadGame(loadScene);
         }
-        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            loadGame(loadScene2);
+        }
     }
 
-    public void loadGame() 
+    public void loadGame(string scene) 
     {
-        SceneManager.LoadScene(loadScene);
+        SceneManager.LoadScene(scene);
     }
+
     public void quitGame() 
     {
         //Debug.Log("Quitting");
