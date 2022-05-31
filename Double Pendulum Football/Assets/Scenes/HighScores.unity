@@ -795,6 +795,7 @@ MonoBehaviour:
   boostSlider: {fileID: 0}
   sliderFill: {fileID: 0}
   boostTime: 5
+  inactive: 0
 --- !u!1 &574081525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +2701,7 @@ MonoBehaviour:
   boostSlider: {fileID: 0}
   sliderFill: {fileID: 0}
   boostTime: 5
+  inactive: 0
 --- !u!1001 &1850730385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2772,6 +2774,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 7abc263de680ae44ca1db8e38c9084c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87190c1a2544f8a448b52456c915ebf0, type: 2}
     - target: {fileID: -1990968323811559735, guid: 7abc263de680ae44ca1db8e38c9084c9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

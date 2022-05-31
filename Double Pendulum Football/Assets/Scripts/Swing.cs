@@ -12,9 +12,9 @@ public class Swing : MonoBehaviour
     [SerializeField] KeyCode swingLeft, swingRight, lockPendulum, lockPendulum1;
     [SerializeField] Slider boostSlider;
     [SerializeField] Image sliderFill;
-    [SerializeField] float boostTime = 5.00f;
+    [SerializeField] float boostTime = 5.00f, inactive;
 
-    private float secHingeAngle = 0.00f,inactive;
+    private float secHingeAngle = 0.00f;
     Color color = Color.red;
     GameObject hingeGo,secHingeGo;
     
@@ -45,6 +45,7 @@ public class Swing : MonoBehaviour
             motor.force = 2000;
             motor.targetVelocity = 140;
             motor.freeSpin = false;
+            active = true;
             inactive = 0.00f;
             
         }
@@ -53,6 +54,7 @@ public class Swing : MonoBehaviour
             motor.force = 2000;
             motor.targetVelocity = -140;
             motor.freeSpin = false;
+            active = true;
             inactive = 0.00f;
 
         }

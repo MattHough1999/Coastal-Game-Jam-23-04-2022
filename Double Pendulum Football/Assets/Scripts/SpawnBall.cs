@@ -9,6 +9,7 @@ public class SpawnBall : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Swing p1Swing, p2Swing;
+    [SerializeField] KeyCode[] resetButtons;
     [SerializeField] bool displayTime,count;
     public TextMeshProUGUI P1Score,P2Score,timeText;
     public AudioSource audioSource;
@@ -16,13 +17,15 @@ public class SpawnBall : MonoBehaviour
     public float volume = 0.5f, touchTimeout = 5.00f, matchTime = 120f;
     public int player1Score = 0, player2Score = 0, minForce = -75, maxForce = 75, reqGoals;
 
+
     GameObject ball;
     string nameString = "";
-    
+    int RMatchTime;
     
 
     void Start()
     {
+        RMatchTime = Mathf.RoundToInt(matchTime);
         if (displayTime) { timeText.enabled = true; }
         else timeText.enabled = false;
         ball = Instantiate(ballPrefab);
@@ -49,6 +52,7 @@ public class SpawnBall : MonoBehaviour
                 
             }
         }
+        if (p1Swing.active && p2Swing != null) { timeText.enabled = false; count = false; matchTime = RMatchTime; }
         if(count) matchTime = matchTime - Time.deltaTime;
         if(matchTime <= 0) 
         {
@@ -60,6 +64,10 @@ public class SpawnBall : MonoBehaviour
             {
                 PlayerPrefs.SetInt("LastScore", player1Score); SceneManager.LoadScene("Menu");
             }
+        }
+        if (Input.GetKeyDown(resetButtons[0]) || Input.GetKeyDown(resetButtons[1]) || Input.GetKeyDown(resetButtons[2]) || Input.GetKeyDown(resetButtons[3])) 
+        {
+            restart();
         }
     }
 

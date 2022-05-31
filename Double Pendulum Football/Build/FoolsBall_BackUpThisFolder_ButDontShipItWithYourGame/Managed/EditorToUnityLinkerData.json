@@ -420,7 +420,9 @@
             "fullManagedTypeName": "UnityEngine.SpriteRenderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Scenes/Menu.unity"
+                "Assets/Scenes/Menu.unity",
+                "Assets/Scenes/SoloPlayer.unity",
+                "Assets/Scenes/MakeName.unity"
             ]
         },
         {
@@ -740,6 +742,16 @@
                 "Assets/Scenes/SoloPlayer.unity",
                 "Assets/Scenes/MakeName.unity",
                 "Assets/Scenes/HighScores.unity"
+            ]
+        },
+        {
+            "managedAssemblyName": "UnityEngine.dll",
+            "nativeClass": "BoxCollider",
+            "fullManagedTypeName": "UnityEngine.BoxCollider",
+            "moduleName": "Physics",
+            "usedInScenes": [
+                "Assets/Scenes/SoloPlayer.unity",
+                "Assets/Scenes/MakeName.unity"
             ]
         },
         {
