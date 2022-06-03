@@ -746,6 +746,28 @@
         },
         {
             "managedAssemblyName": "UnityEngine.dll",
+            "nativeClass": "ParticleSystem",
+            "fullManagedTypeName": "UnityEngine.ParticleSystem",
+            "moduleName": "ParticleSystem",
+            "usedInScenes": [
+                "Assets/Scenes/SampleScene.unity",
+                "Assets/Scenes/SoloPlayer.unity",
+                "Assets/Scenes/MakeName.unity"
+            ]
+        },
+        {
+            "managedAssemblyName": "UnityEngine.dll",
+            "nativeClass": "ParticleSystemRenderer",
+            "fullManagedTypeName": "UnityEngine.ParticleSystemRenderer",
+            "moduleName": "ParticleSystem",
+            "usedInScenes": [
+                "Assets/Scenes/SampleScene.unity",
+                "Assets/Scenes/SoloPlayer.unity",
+                "Assets/Scenes/MakeName.unity"
+            ]
+        },
+        {
+            "managedAssemblyName": "UnityEngine.dll",
             "nativeClass": "BoxCollider",
             "fullManagedTypeName": "UnityEngine.BoxCollider",
             "moduleName": "Physics",

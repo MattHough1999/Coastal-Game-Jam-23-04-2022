@@ -58,7 +58,7 @@ public class Swing : MonoBehaviour
             inactive = 0.00f;
 
         }
-        if (Input.GetKey(lockPendulum))
+        if (Input.GetKey(lockPendulum) || Input.GetKey(lockPendulum1))
         {
             if (boostTime >= 0)
             {

@@ -6,6 +6,7 @@ public class GoalMovement : MonoBehaviour
 {
     [SerializeField] Transform origin, target;
     [SerializeField] float time, speed, distance;
+    [SerializeField] bool move = true;
     
     Transform swap;
     bool reachedPoint = true;
@@ -19,7 +20,15 @@ public class GoalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (reachedPoint) 
+        if (move) 
+        {
+            moveGoal();
+        }
+    }
+
+    void moveGoal() 
+    {
+        if (reachedPoint)
         {
             reachedPoint = false;
             swap = target;
@@ -27,7 +36,7 @@ public class GoalMovement : MonoBehaviour
             origin = swap;
             speed = Random.Range(5, 20);
         }
-        dist = speed * Time.deltaTime; 
+        dist = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, dist);
 
         if (Vector3.Distance(transform.position, target.position) < 0.001f)

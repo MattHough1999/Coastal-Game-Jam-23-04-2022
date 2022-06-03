@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip clip;
+    [SerializeField] ParticleSystem particles;
+    [SerializeField] Transform lookAt;
     public float volume = 0.5f,timeout = 5.00f;
 
     public SpawnBall spawn;
@@ -20,6 +22,8 @@ public class Ball : MonoBehaviour
     void Start()
     {
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
+        lookAt = GameObject.Find("LookAt").transform;
+        particles = spawn.PS;
         minForce = spawn.minForce; maxForce = spawn.maxForce;
         rb.AddForce(Random.Range(minForce, maxForce), Random.Range(-75, 75), 0, ForceMode.Impulse);
         Color color = new Color();
@@ -79,7 +83,14 @@ public class Ball : MonoBehaviour
             default: break;
 
         }
-        
+        if (particles != null)
+        {
+            particles.transform.position = collision.transform.position;
+            particles.transform.LookAt(lookAt);
+            particles.Play();
+        }
+
+
     }
 
     void outOfBounds(string lastTouched) 

@@ -14,11 +14,14 @@ public class namePickBall : MonoBehaviour
 
     private float touchTimeout = 7.00f;
     int minForce, maxForce;
-
+    ParticleSystem particles;
+    Transform lookAt;
     // Start is called before the first frame update
     void Start()
     {
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
+        lookAt = GameObject.Find("LookAt").transform;
+        particles = spawn.PS;
         minForce = spawn.minForce; maxForce = spawn.maxForce;
         rb.AddForce(Random.Range(minForce, maxForce), Random.Range(-75, 75), 0, ForceMode.Impulse);
         Color color = new Color();
@@ -49,6 +52,15 @@ public class namePickBall : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "P2Goal2") { spawn.addLetter(collision.gameObject.name); }
+        if (collision.gameObject.tag == "P2Goal2") 
+        {
+            if (particles != null)
+            {
+                particles.transform.position = collision.transform.position;
+                particles.transform.LookAt(lookAt);
+                particles.Play();
+            }
+            spawn.addLetter(collision.gameObject.name); 
+        }
     }
 }

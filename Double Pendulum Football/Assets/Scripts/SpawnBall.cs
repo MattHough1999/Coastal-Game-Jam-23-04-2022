@@ -11,6 +11,7 @@ public class SpawnBall : MonoBehaviour
     [SerializeField] Swing p1Swing, p2Swing;
     [SerializeField] KeyCode[] resetButtons;
     [SerializeField] bool displayTime,count;
+    public ParticleSystem PS;
     public TextMeshProUGUI P1Score,P2Score,timeText;
     public AudioSource audioSource;
     public List<AudioClip> goalClips,ownGoalClips;

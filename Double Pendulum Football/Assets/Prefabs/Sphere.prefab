@@ -127,6 +127,11 @@ MonoBehaviour:
   rb: {fileID: 5815501039344604595}
   source: {fileID: 5768677018229553153}
   clip: {fileID: 8300000, guid: aad3c0321728f6244a39791c874abb47, type: 3}
+  particles: {fileID: 2357026824349412955, guid: 67b6735ea5a935c4ea6c948a7b39e025,
+    type: 3}
+  lookAt: {fileID: 0}
+  volume: 0.5
+  timeout: 5
   spawn: {fileID: 0}
 --- !u!82 &5768677018229553153
 AudioSource:
