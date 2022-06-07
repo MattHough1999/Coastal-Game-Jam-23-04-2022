@@ -98,6 +98,7 @@
 		<type fullname="UnityEngine.Rendering.Universal.PostProcessData" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset" preserve="nothing"/>
+		<type fullname="UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.TextMeshPro">
 		<type fullname="TMPro.TMP_FontAsset" preserve="nothing"/>

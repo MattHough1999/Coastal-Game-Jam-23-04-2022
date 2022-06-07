@@ -35,6 +35,10 @@ public class OptionsMenu : MonoBehaviour
         {
             saveSettings();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         source.volume = musicVol;
         mvol = master.value;
         muvol = music.value;

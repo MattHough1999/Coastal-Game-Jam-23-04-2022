@@ -37,6 +37,11 @@ public class MenuButtons : MonoBehaviour
         {
             loadGame(loadScene1);
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if(SceneManager.GetActiveScene().name == "Menu") { quitGame(); }
+            else { loadGame("Menu"); }
+        }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             quitGame();
@@ -57,12 +62,6 @@ public class MenuButtons : MonoBehaviour
         masterVol = 0;
         // musicVol = 0; goalVol = 0; bounceVol = 0 ;
     }
-    public void saveSettings()
-    {
-        PlayerPrefs.SetFloat("masterVol", masterVol);
-        PlayerPrefs.SetFloat("musicVol", musicVol);
-        PlayerPrefs.SetFloat("goalVol", goalVol);
-        PlayerPrefs.SetFloat("bounceVol", bounceVol);
-    }
+    
     
 }

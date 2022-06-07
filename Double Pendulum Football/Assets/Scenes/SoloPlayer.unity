@@ -10345,7 +10345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 301050737}
   clip: {fileID: 8300000, guid: dcf790cd328450041a5a8e6a8f10dff3, type: 3}
-  volume: 0.5
+  masterVol: 0
+  bounceVol: 0
   toneMod: 0
 --- !u!1 &350639185
 GameObject:
@@ -10475,8 +10476,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10804,7 +10805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 500681250}
   clip: {fileID: 8300000, guid: 62788ba8d8cf9f24cb666d7580bb66c7, type: 3}
-  volume: 0.5
+  masterVol: 0
+  bounceVol: 0
   toneMod: 0
 --- !u!1 &574081525
 GameObject:
@@ -12669,8 +12671,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13657,7 +13659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 2012231209}
   clip: {fileID: 8300000, guid: e6df6ba3fbbc56c4986cca4f85eb8764, type: 3}
-  volume: 0.5
+  masterVol: 0
+  bounceVol: 0
   toneMod: 0
 --- !u!1 &2030717640
 GameObject:

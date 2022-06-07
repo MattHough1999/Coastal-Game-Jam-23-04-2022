@@ -76,6 +76,7 @@ public class SpawnBall : MonoBehaviour
         {
             restart();
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) { SceneManager.LoadScene("Menu"); }
     }
 
     public void addPoint(string Player, int score,bool ownGoal)
