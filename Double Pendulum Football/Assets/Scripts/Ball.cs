@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     [SerializeField] AudioClip clip;
     [SerializeField] ParticleSystem particles;
     [SerializeField] Transform lookAt;
-    public float volume = 0.5f,timeout = 5.00f;
+    public float masterVolume = 0.5f,bounceVolume = 0.5f,timeout = 5.00f;
 
     public SpawnBall spawn;
 
@@ -23,6 +23,8 @@ public class Ball : MonoBehaviour
     {
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         lookAt = GameObject.Find("LookAt").transform;
+        masterVolume = PlayerPrefs.GetFloat("masterVol");
+        bounceVolume = PlayerPrefs.GetFloat("bounceVol") * masterVolume;
         particles = spawn.PS;
         minForce = spawn.minForce; maxForce = spawn.maxForce;
         rb.AddForce(Random.Range(minForce, maxForce), Random.Range(-75, 75), 0, ForceMode.Impulse);
@@ -32,6 +34,7 @@ public class Ball : MonoBehaviour
         color.b = Random.Range(0.00f, 1.00f);
         GetComponent<Renderer>().material.SetColor("_BaseColor", color);
         timeout = spawn.touchTimeout;
+
     }
     // Update is called once per frame
     void Update()
@@ -53,7 +56,7 @@ public class Ball : MonoBehaviour
         if (!source.isPlaying) 
         {
             source.pitch = Random.Range(0.5f, 1.5f);
-            source.PlayOneShot(clip, volume);
+            source.PlayOneShot(clip, bounceVolume);
         }
         
         touchTimeout = timeout;

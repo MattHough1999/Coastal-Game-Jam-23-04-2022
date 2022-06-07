@@ -17,6 +17,7 @@ public class SpawnBall : MonoBehaviour
     public List<AudioClip> goalClips,ownGoalClips;
     public float volume = 0.5f, touchTimeout = 5.00f, matchTime = 120f;
     public int player1Score = 0, player2Score = 0, minForce = -75, maxForce = 75, reqGoals;
+    float masterVol, musicVol, goalVol, bounceVol;
 
 
     GameObject ball;
@@ -26,6 +27,11 @@ public class SpawnBall : MonoBehaviour
 
     void Start()
     {
+
+        masterVol = PlayerPrefs.GetFloat("masterVol", 0.5f);
+        musicVol = PlayerPrefs.GetFloat("musicVol", 0.5f * masterVol);
+        goalVol = PlayerPrefs.GetFloat("goalVol", 0.5f * masterVol);
+        bounceVol = PlayerPrefs.GetFloat("masterVol", 0.5f * masterVol);
         RMatchTime = Mathf.RoundToInt(matchTime);
         if (displayTime) { timeText.enabled = true; }
         else timeText.enabled = false;
@@ -76,16 +82,16 @@ public class SpawnBall : MonoBehaviour
     {
         if (Player == "PlayerOne")
         {
-            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0,goalClips.Count)], volume);
-            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], volume);
+            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0,goalClips.Count)], goalVol);
+            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], goalVol);
             player1Score = player1Score + score;
             P1Score.text = "Scored: " + player1Score.ToString();
             restart();
         }
         if (Player == "PlayerTwo")
         {
-            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0, goalClips.Count)], volume);
-            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], volume);
+            if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0, goalClips.Count)], goalVol);
+            else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], goalVol);
             player2Score = player2Score + score;
             P2Score.text = "Scored: " + player2Score.ToString();
             restart();

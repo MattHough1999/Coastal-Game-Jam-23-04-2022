@@ -1195,10 +1195,10 @@ MonoBehaviour:
   active: 1
   hinge: {fileID: 1170940496}
   secondaryHinge: {fileID: 1644950355}
-  swingLeft: 100
-  swingRight: 103
-  lockPendulum: 97
-  lockPendulum1: 119
+  swingLeft: 275
+  swingRight: 276
+  lockPendulum: 273
+  lockPendulum1: 273
   boostSlider: {fileID: 1926059824}
   sliderFill: {fileID: 1180987319}
   boostTime: 5
@@ -3996,10 +3996,10 @@ MonoBehaviour:
   active: 1
   hinge: {fileID: 301050734}
   secondaryHinge: {fileID: 2012231204}
-  swingLeft: 276
-  swingRight: 275
-  lockPendulum: 306
-  lockPendulum1: 120
+  swingLeft: 97
+  swingRight: 100
+  lockPendulum: 119
+  lockPendulum1: 119
   boostSlider: {fileID: 158718935}
   sliderFill: {fileID: 1202354643}
   boostTime: 5

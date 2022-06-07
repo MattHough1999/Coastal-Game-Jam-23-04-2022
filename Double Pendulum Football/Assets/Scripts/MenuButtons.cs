@@ -5,19 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
-    [SerializeField] string loadScene;
-    [SerializeField] string loadScene2;
-
+    [SerializeField] string loadScene, loadScene1, loadScene2;
+    [SerializeField] float masterVol, musicVol, goalVol, bounceVol;
+    [SerializeField] AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
         
+        masterVol = PlayerPrefs.GetFloat("masterVol", 0.5f);
+        musicVol = PlayerPrefs.GetFloat("musicVol", 0.5f * masterVol);
+        goalVol = PlayerPrefs.GetFloat("goalVol", 0.5f * masterVol);
+        bounceVol = PlayerPrefs.GetFloat("masterVol", 0.5f * masterVol);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!audio.isPlaying) 
+        {
+            audio.PlayOneShot(audio.clip, musicVol);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
             loadGame(loadScene);
@@ -25,6 +32,14 @@ public class MenuButtons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             loadGame(loadScene2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) 
+        {
+            loadGame(loadScene1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            quitGame();
         }
     }
 
@@ -35,7 +50,19 @@ public class MenuButtons : MonoBehaviour
 
     public void quitGame() 
     {
-        //Debug.Log("Quitting");
         Application.Quit();
     }
+    public void mute()
+    {
+        masterVol = 0;
+        // musicVol = 0; goalVol = 0; bounceVol = 0 ;
+    }
+    public void saveSettings()
+    {
+        PlayerPrefs.SetFloat("masterVol", masterVol);
+        PlayerPrefs.SetFloat("musicVol", musicVol);
+        PlayerPrefs.SetFloat("goalVol", goalVol);
+        PlayerPrefs.SetFloat("bounceVol", bounceVol);
+    }
+    
 }

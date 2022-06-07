@@ -8,7 +8,8 @@ public class namePickBall : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip clip;
-    public float volume = 0.5f, timeout = 5.00f;
+    public float timeout = 5.00f;
+    float bounceVol, masterVol;
 
     public SpawnBall spawn;
 
@@ -19,6 +20,8 @@ public class namePickBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        masterVol = PlayerPrefs.GetFloat("masterVol");
+        bounceVol = PlayerPrefs.GetFloat("bounceVol") * masterVol;
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         lookAt = GameObject.Find("LookAt").transform;
         particles = spawn.PS;
@@ -45,7 +48,7 @@ public class namePickBall : MonoBehaviour
         if (!source.isPlaying)
         {
             source.pitch = Random.Range(0.5f, 1.5f);
-            source.PlayOneShot(clip, volume);
+            source.PlayOneShot(clip, bounceVol);
         }
 
         touchTimeout = timeout;
