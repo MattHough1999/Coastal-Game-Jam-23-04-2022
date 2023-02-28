@@ -14,17 +14,20 @@ public class Highscores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
-
         initiateArray();
         
-        scoreNames = PlayerPrefs.GetString("Scores","AAAAA10\nMMMIA22").Split();
+        scoreNames = PlayerPrefs.GetString("Scores", "STDIO34\nSCORE33").Split();
         scores = new int[scoreNames.Length];
         //split into names and score
         for (int i = 0; i < scoreNames.Length; i++) 
         {
-            scores[i] = Int32.Parse(scoreNames[i].Substring(5));
-            scoreNames[i] = scoreNames[i].Substring(0,5); 
+            //skips too small and large numbers
+            try
+            {
+                scores[i] = Int32.Parse(scoreNames[i].Substring(5));
+                scoreNames[i] = scoreNames[i].Substring(0, 5);
+            } catch (Exception e) {}
+             
         }
 
         //sort arrays
@@ -48,7 +51,7 @@ public class Highscores : MonoBehaviour
         }
 
         //create table
-        for(int i = 0;i < scoreNames.Length; i++) 
+        for(int i = 0;i < 10 && i < scoreNames.Length; i++) 
         {
             highscores[i, 0] = scoreNames[i];
             highscores[i, 1] = scores[i].ToString();

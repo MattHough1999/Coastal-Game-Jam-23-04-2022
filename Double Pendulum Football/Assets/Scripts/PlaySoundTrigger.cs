@@ -12,8 +12,8 @@ public class PlaySoundTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        masterVol = PlayerPrefs.GetFloat("masterVol");
-        bounceVol = PlayerPrefs.GetFloat("bounceVol") * masterVol;
+        masterVol = PlayerPrefs.GetFloat("masterVol",0.5f);
+        bounceVol = PlayerPrefs.GetFloat("bounceVol",0.5f) * masterVol;
     }
 
     // Update is called once per frame

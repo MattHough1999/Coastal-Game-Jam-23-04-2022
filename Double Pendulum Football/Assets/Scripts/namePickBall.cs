@@ -20,8 +20,8 @@ public class namePickBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        masterVol = PlayerPrefs.GetFloat("masterVol");
-        bounceVol = PlayerPrefs.GetFloat("bounceVol") * masterVol;
+        masterVol = PlayerPrefs.GetFloat("masterVol",0.5f);
+        bounceVol = PlayerPrefs.GetFloat("bounceVol",0.5f) * masterVol;
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         lookAt = GameObject.Find("LookAt").transform;
         particles = spawn.PS;

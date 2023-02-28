@@ -12,14 +12,17 @@ public class Swing : MonoBehaviour
     [SerializeField] KeyCode swingLeft, swingRight, lockPendulum, lockPendulum1;
     [SerializeField] Slider boostSlider;
     [SerializeField] Image sliderFill;
-    [SerializeField] float boostTime = 5.00f, inactive;
+    [SerializeField] float maxBoostTime = 5.00f, inactive;
 
     private float secHingeAngle = 0.00f;
+    float boostTime;
     Color color = Color.red;
     GameObject hingeGo,secHingeGo;
     
     void Start()
     {
+        boostTime = maxBoostTime;
+        boostSlider.maxValue = maxBoostTime;
         if(hinge == null || secondaryHinge == null) 
         {
             Application.Quit();
@@ -68,15 +71,15 @@ public class Swing : MonoBehaviour
             }
             
         }
-        if(boostTime <= 5) 
+        if(boostTime <= maxBoostTime) 
         {
-            boostTime = boostTime + Time.deltaTime;
+            boostTime = boostTime + (Time.deltaTime * 2);
         }
         hinge.motor = motor;
         hinge.useMotor = true;
         boostSlider.value = boostTime;
-        color.r = (boostTime * 5) * (-1);
-        color.g = boostTime / 5;
+        color.r = (boostTime * maxBoostTime) * (-1);
+        color.g = boostTime / maxBoostTime;
         sliderFill.color = color;
         inactive = inactive + Time.deltaTime;
         if(inactive >= 120) 

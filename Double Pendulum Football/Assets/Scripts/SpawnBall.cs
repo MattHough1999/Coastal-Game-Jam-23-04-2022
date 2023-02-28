@@ -13,7 +13,7 @@ public class SpawnBall : MonoBehaviour
     [SerializeField] bool displayTime,count;
     public ParticleSystem PS;
     public TextMeshProUGUI P1Score,P2Score,timeText;
-    public AudioSource audioSource;
+    public AudioSource audioSource, ambient;
     public List<AudioClip> goalClips,ownGoalClips;
     public float volume = 0.5f, touchTimeout = 5.00f, matchTime = 120f;
     public int player1Score = 0, player2Score = 0, minForce = -75, maxForce = 75, reqGoals;
@@ -29,13 +29,14 @@ public class SpawnBall : MonoBehaviour
     {
 
         masterVol = PlayerPrefs.GetFloat("masterVol", 0.5f);
-        musicVol = PlayerPrefs.GetFloat("musicVol", 0.5f * masterVol);
-        goalVol = PlayerPrefs.GetFloat("goalVol", 0.5f * masterVol);
-        bounceVol = PlayerPrefs.GetFloat("masterVol", 0.5f * masterVol);
+        musicVol = PlayerPrefs.GetFloat("musicVol", 0.5f) * masterVol;
+        goalVol = PlayerPrefs.GetFloat("goalVol", 0.5f) * masterVol;
+        bounceVol = PlayerPrefs.GetFloat("bounceVol", 0.5f) * masterVol;
         RMatchTime = Mathf.RoundToInt(matchTime);
         if (displayTime) { timeText.enabled = true; }
         else timeText.enabled = false;
         ball = Instantiate(ballPrefab);
+        ambient.volume = musicVol;
     }
 
     // Update is called once per frame
@@ -86,7 +87,7 @@ public class SpawnBall : MonoBehaviour
             if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0,goalClips.Count)], goalVol);
             else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], goalVol);
             player1Score = player1Score + score;
-            P1Score.text = "Scored: " + player1Score.ToString();
+            P1Score.text = "Score: " + player1Score.ToString();
             restart();
         }
         if (Player == "PlayerTwo")
@@ -94,27 +95,31 @@ public class SpawnBall : MonoBehaviour
             if (ownGoal) audioSource.PlayOneShot(goalClips[Random.Range(0, goalClips.Count)], goalVol);
             else audioSource.PlayOneShot(ownGoalClips[Random.Range(0, ownGoalClips.Count)], goalVol);
             player2Score = player2Score + score;
-            P2Score.text = "Scored: " + player2Score.ToString();
+            P2Score.text = "Score: " + player2Score.ToString();
             restart();
         }
         if(player1Score >= reqGoals) 
         {
             PlayerPrefs.SetString("Winner", "Player 1");
+            PlayerPrefs.SetString("LastScene","MultiPlayer");
             SceneManager.LoadScene("End");
         }
         else if (player2Score >= reqGoals)
         {
             PlayerPrefs.SetString("Winner", "Player 2");
+            PlayerPrefs.SetString("LastScene", "MultiPlayer");
             SceneManager.LoadScene("End");
         }
     }
     public void addLetter(string letter) 
     {
-        if(nameString.Length <= 4) { nameString += letter; P1Score.text = "Your Name is: \n" + nameString; restart(); }
+        if(nameString.Length < 4) { nameString += letter; P1Score.text = "Your Name is: \n" + nameString; restart(); }
         else
         {
-            PlayerPrefs.SetString("Scores", PlayerPrefs.GetString("Scores", "AAAAA0\nMMMIA22") + "\n" + nameString + PlayerPrefs.GetInt("LastScore"));
+            nameString += letter;
+            PlayerPrefs.SetString("Scores", PlayerPrefs.GetString("Scores", "STDIO34\nSCORE33") + "\n" + nameString + PlayerPrefs.GetInt("LastScore"));
             //PlayerPrefs.SetInt("totalHighScores", PlayerPrefs.GetInt("totalHighScores") + 1);
+            PlayerPrefs.SetString("LastScene","SoloPlayer");
             SceneManager.LoadScene("HighScores");
         }
     }

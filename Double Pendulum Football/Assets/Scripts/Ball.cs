@@ -23,8 +23,8 @@ public class Ball : MonoBehaviour
     {
         spawn = GameObject.Find("SpawnBall").GetComponent<SpawnBall>();
         lookAt = GameObject.Find("LookAt").transform;
-        masterVolume = PlayerPrefs.GetFloat("masterVol");
-        bounceVolume = PlayerPrefs.GetFloat("bounceVol") * masterVolume;
+        masterVolume = PlayerPrefs.GetFloat("masterVol",0.5f);
+        bounceVolume = PlayerPrefs.GetFloat("bounceVol", 0.5f) * masterVolume;
         particles = spawn.PS;
         minForce = spawn.minForce; maxForce = spawn.maxForce;
         rb.AddForce(Random.Range(minForce, maxForce), Random.Range(-75, 75), 0, ForceMode.Impulse);

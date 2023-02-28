@@ -61,14 +61,9 @@ public class OptionsMenu : MonoBehaviour
     public void getDefault() 
     {
         mvol = PlayerPrefs.GetFloat("masterVol",0.5f);
-        muvol = PlayerPrefs.GetFloat("musicVol",0.5f);
+        muvol = PlayerPrefs.GetFloat("musicVol", 0.5f);
         gvol = PlayerPrefs.GetFloat("goalVol", 0.5f);
         bvol = PlayerPrefs.GetFloat("masterVol", 0.5f);
-        
-        masterVol = PlayerPrefs.GetFloat("masterVol", 0.5f);
-        musicVol = PlayerPrefs.GetFloat("musicVol") * masterVol;
-        goalVol = PlayerPrefs.GetFloat("goalVol") * masterVol;
-        bounceVol = PlayerPrefs.GetFloat("bounceVol") * masterVol;
         
     }
 
@@ -101,5 +96,15 @@ public class OptionsMenu : MonoBehaviour
     public void loadMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+    public void resetStats() 
+    {
+        PlayerPrefs.DeleteAll();
+        getDefault();
+
+        master.value = mvol;
+        music.value = muvol;
+        goal.value = gvol;
+        bounce.value = bvol;
     }
 }
